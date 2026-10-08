@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta
+        name="description"
+        content="A responsive and accessible website featuring semantic HTML, CSS Grid layout, navigation,
+                 beach images and social media links.">
+
+
+
+    <title>Responsive Accessible Grid Website</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8a10e0f309.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        /* reset margins, padding */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: white;
+            color: #000;
+            font-family: "Montserrat", sans-serif;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+        }
+
+
+        /* Grid Container */
+
+        .container-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px;
+            grid-template-rows: 100px 200px 40px;
+            gap: 10px;
+            min-height: 100vh;
+        }
+
+
+        /* Header / Logo */
+
+        .logo {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+
+            background-color: lightblue;
+            color: #000;
+
+            display: grid;
+            place-items: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        /* Navigation */
+
+        .navbar {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+
+            background-color: lightblue;
+            color: #000;
+
+            display: grid;
+            place-items: center;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Mouse hover */
+
+        nav a:hover {
+            background-color: #fff;
+            color: #1b1b20;
+        }
+
+        /* Keyboard focus */
+
+        nav a:focus-visible {
+            outline: 3px solid #000;
+            outline-offset: 3px;
+            background-color: #fff;
+            color: #000;
+        }
+
+
+        /* Social Links */
+
+        .social {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social a {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aqua;
+            color: #000;
+            font-size: 24px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social a:hover {
+            background-color: orange;
+            transform: scale(1.1);
+        }
+
+        .social a:focus-visible {
+            outline: 3px solid #000;
+            outline-offset: 3px;
+        }
+
+
+        /* Images */
+
+        .image-left {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            min-height: 220px;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .image-right {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+            min-height: 220px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        /* Main Content */
+
+        .main-content {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            background-color: #fff;
+            color: #000;
+            display: grid;
+            place-items: center;
+            min-height: 220px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+
+        /* Footer */
+
+        .copyright {
+            grid-column: 1 / 4;
+            grid-row: 3 / 4;
+            background-color: lightblue;
+            color: #000;
+            display: grid;
+            place-items: center;
+            font-size: 16px;
+            text-align: center;
+        }
+
+
+        /* Responsive Devices - Tablet */
+
+        @media (max-width: 800px) {
+
+            .container-grid {
+                grid-template-columns: 150px 1fr 150px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+        }
+
+
+        /* Responsive Devices - Mobile */
+
+        @media (max-width: 600px) {
+
+            .container-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 6px;
+            }
+
+            .logo {
+                grid-column: 1;
+                grid-row: 1;
+
+                min-height: 80px;
+            }
+
+            .navbar {
+                grid-column: 1;
+                grid-row: 2;
+
+                min-height: 80px;
+
+                padding: 16px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+
+                padding-bottom: 10px;
+            }
+
+            .social {
+                grid-column: 1;
+                grid-row: 3;
+
+                height: 120px;
+            }
+
+            .image-left {
+                grid-column: 1;
+                grid-row: 4;
+
+                height: 200px;
+                min-height: 200px;
+
+                margin-left: 0;
+            }
+
+            .main-content {
+                grid-column: 1;
+                grid-row: 5;
+
+                min-height: 200px;
+                height: auto;
+            }
+
+            .image-right {
+                grid-column: 1;
+                grid-row: 6;
+
+                height: 200px;
+                min-height: 200px;
+
+                margin-right: 0;
+            }
+
+            .copyright {
+                grid-column: 1;
+                grid-row: 7;
+
+                min-height: 40px;
+            }
+
+        }
+
+
+        /* Reduced Motion */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container-grid">
+
+        <!-- Header / Logo -->
+
+        <header class="logo">
+            <p>LOGO</p>
+        </header>
+
+
+        <!-- Main navigation -->
+
+        <div class="navbar">
+
+            <nav aria-label="Main navigation">
+
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+
+        <!-- Social media navigation -->
+
+        <aside class="social" aria-label="Social media links">
+
+            <a
+                href="https://www.facebook.com"
+                aria-label="Visit our Facebook page"
+            >
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
+
+            <a
+                href="https://www.instagram.com"
+                aria-label="Visit our Instagram page"
+            >
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+
+            <a
+                href="https://www.twitter.com"
+                aria-label="Visit our Twitter page"
+            >
+                <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+            </a>
+
+        </aside>
+
+
+        <!-- Left image -->
+
+        <aside class="image-left" aria-label="Beach image">
+
+            <img
+                class="img"
+                src="images/gallery4.jpg"
+                alt="Boats at the beach"
+            >
+
+        </aside>
+
+
+        <!-- Main content -->
+
+        <main class="main-content">
+
+            <div>
+
+                <h1>Main Content</h1>
+
+                <p>
+                    This is the main content of the website.
+                </p>
+
+            </div>
+
+        </main>
+
+
+        <!-- Right image -->
+
+        <aside class="image-right" aria-label="Beach image">
+
+            <img
+                class="img"
+                src="images/gallery5.jpg"
+                alt="Boats at the beach"
+            >
+
+        </aside>
+
+
+        <!-- Footer -->
+
+        <footer class="copyright">
+
+            <p>
+                &copy; Copyright 2026. All Rights Reserved.
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid 2 Responsive</title>
+
+     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/8a10e0f309.js" crossorigin="anonymous"></script>
+
+    
+        <style>
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                 background-color: black;
+                 font-family: "Montserrat", sans-serif;
+            }
+
+
+
+            .container-grid {
+                display: grid;                                /* displays grid  */
+                grid-template-columns: 200px auto 200px;       /* auto autosizes the centre column whilst others are fixed 200px */
+                grid-gap: 10px;                               /* creates space between sections */
+                grid-template-rows: 100px 200px 40px;               
+                                                                          
+
+            }
+
+            /* Logo */
+
+            .section1 {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+                background-color: #333;
+                color: white;
+                /* display grid */
+                display: grid;
+                /*center contents vertical and horizontal */
+                place-items: center;
+                font-size: 20px;
+            }
+
+            /* Navigation */
+
+           .section2 {
+                grid-column: 2 / 4;
+                grid-row: 1 / 2;
+                background-color: #222;
+                color: white;
+                 /* display grid */
+                display: grid;
+                /*center contents vertical and horizontal */
+                place-items: center;
+                font-size: 20px;
+            }
+
+            nav {
+                /* take up full width */
+                width: 100%;
+            }
+
+            nav ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+            }
+
+            nav li{
+                 margin: 0 15px;
+            }
+
+            nav a{
+                 font-family: "Montserrat", sans-serif;
+                 font-size: 16px;
+                 color: #e6e6e6;
+                 text-decoration: none;
+                 transition: color 0.3s, border-bottom 0.3;
+                 padding-bottom: 5px;
+            }
+
+            nav a:hover{
+                 color: #fff;
+                 border-bottom: 2px solid #e6e6e6;
+            }
+
+            .section3 {
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+                /* at least 220px tall */
+                min-height: 220px;
+                /* prevents oversized image from spilling outside the box */
+                overflow: hidden;
+                margin-left: 10px;
+            }
+
+            .section4 {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+                background-color: #fff;
+                color: #000;
+                /* display grid */
+                display: grid;
+                /*center contents vertical and horizontal */
+                place-items: center;
+                /* content at least 220px tall */
+                min-height: 220px;
+                padding: 20px;
+                background-color: white;
+                font-size: 20px;
+            }
+
+            .section5 {
+                grid-column: 3 / 4;
+                grid-row: 2 / 3;
+                /* at least 220px tall */
+                min-height: 220px;
+                /* prevents oversized image from spilling outside the box */
+                overflow: hidden;
+                margin-right: 10px;
+            }
+
+             /* Images */
+
+            .img {
+               /* makes image a block element helps avoid unwanted gaps that can 
+               occur with inline images */
+               display: block;
+               width: 100%;
+               height: 100%;
+               /* stops image being squashed, crops excess */
+               object-fit: cover;
+            }
+
+
+            .section6 {
+                grid-column: 1 / 4;
+                grid-row: 3 / 4;
+                background-color: #222;
+                color: white;
+                /* centers copyright text */
+                 /* display grid */
+                display: grid;
+                /*center contents vertical and horizontal */
+                place-items: center;
+                font-size: 16px;
+            }
+
+             /* Responsive Design Tablet 800px or smaller */
+
+        @media (max-width: 800px) {
+
+            .container-grid {
+                /* on smaller screens sidebars shrink was 200px now 150px */
+                grid-template-columns: 150px 1fr 150px;
+            }
+
+            nav ul {
+                /* reduces gap from 30px to 15px */
+                gap: 15px;
+            }
+
+        }
+
+           /* Responsive Design Mobile 600px or less */
+
+        @media (max-width: 600px) {
+
+            .container-grid {
+
+                /* Change to one column vertical */
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 6px;
+            }
+
+
+            .section1 {
+                /* logo slightly shorter on mobile desktop 100px now 80px */
+                grid-column: 1;
+                grid-row: 1;
+                height: 80px;
+            }
+
+
+            .section2 {
+                /* nav box slightly shorter */
+                grid-column: 1;
+                grid-row: 2;
+                min-height: 80px;
+            }
+
+
+            nav ul {
+                /* change to 1 column vertical */
+                flex-direction: column;
+                gap: 15px;
+            }
+
+
+            .section3 {
+                /* makes image 200px tall */
+                height: 200px;
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+
+            .section4 {
+                /* main content minimum height 250px */
+                min-height: 250px;
+                grid-column: 1;
+                grid-row: 4;
+            }
+
+
+            .section5 {
+                /* makes second image 200px tall */
+                height: 200px;
+                grid-column: 1;
+                grid-row: 5;
+            }
+
+            .section6 {
+                /* makes second image 200px tall */
+                height: 200px;
+                grid-column: 1;
+                grid-row: 6;
+            }
+
+
+        }
+
+           
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+         <div class="container-grid">
+
+            <div class="section1">LOGO</div>
+
+            <div class="section2">
+                 <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            </div>
+
+            <!-- Left Image -->
+
+            <div class="section3">
+                <img class="img" src="images/gallery4.jpg" alt="Left image">
+            </div>
+
+            <!-- Main Content -->
+
+            <div class="section4">
+                 <h1>Main Content</h1>
+                 <p>  This is the main content of the website. </p>
+            </div>
+
+            <!-- Right Image -->
+
+            <div class="section5">
+                 <img class="img" src="images/gallery5.jpg" alt="Right image">
+            </div>
+
+            <!-- Copyright -->
+
+            <div class="section6">
+                <p>&copy; Copyright 2026. All Rights Reserved.</p>
+            </div>
+
+        </div> <!-- End of grid container -->
+
+    </body>
+
+    </html>

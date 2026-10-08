@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grid 1 Responsive</title>
+
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        /* Body */
+
+        body {
+            /* removes default margin */
+            margin: 0;
+            background-color: black;
+            font-family: "Montserrat", sans-serif;
+        }
+
+
+        /* Main Grid Container */
+
+        .container {
+            /* use full width */
+            width: 100%;
+            /* stops over stretching on large monitor */
+            max-width: 1400px;
+            /* centers container */
+            margin: 0 auto;
+            padding: 10px;
+
+            /* activates CSS Grid */
+            display: grid;
+
+            /*
+                3 columns:
+
+                LOGO | NAV | NAV
+                IMG  | MAIN | IMG
+                COPY | COPY | COPY
+            */
+
+            grid-template-columns: 200px 1fr 200px;
+
+            grid-template-areas:
+                "logo nav nav"
+                "left main right"
+                "copyright copyright copyright";
+
+            gap: 10px;
+        }
+
+
+        /* Logo */
+
+        .box1 {
+            grid-area: logo;
+            height: 100px;
+            /* display grid */
+            display: grid;
+            /*center contents vertical and horizontal */
+            place-items: center;
+            background-color: #333;
+            color: white;
+        }
+
+
+        /* Navigation */
+
+        .box2 {
+            grid-area: nav;
+            /* don't make shorter than 100Px */
+            min-height: 100px;
+            /* display grid */
+            display: grid;
+            /*center contents vertical and horizontal */
+            place-items: center;
+            background-color: #222;
+        }
+
+        nav {
+            /* take up full width */
+            width: 100%;
+        }
+
+        nav ul {
+            /* display grid */
+            display: grid;
+            /* creates 3 auto columns */
+            grid-template-columns: repeat(3, auto);
+            /* centers horizontally */
+            justify-content: center;
+            /* centers vertically */
+            align-items: center;
+            gap: 30px;
+            /* removes bullets */
+            list-style: none;
+            /* removes browser <ul> default spacing */
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            /* removes underline */
+            text-decoration: none;
+            /* smoother transition */
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        nav a:hover {
+            color: #ccc;
+            border-bottom: 2px solid white;
+        }
+
+
+        /* Left Image */
+
+        .box3 {
+            /* puts .box3 into Grid area named left */
+            grid-area: left;
+            /*image box at least 220px tall */
+            min-height: 220px;
+            /* hide any content that overflows */
+            overflow: hidden;
+            background-color: #333;
+        }
+
+
+        /* Main Content */
+
+        .box4 {
+            /* places .box4 in the middle Grid area */
+            grid-area: main;
+            /* content at least 220px tall */
+            min-height: 220px;
+            padding: 20px;
+            background-color: white;
+        }
+
+
+        /* Right Image */
+
+        .box5 {
+            /* places .box5 in the right-hand Grid area */
+            grid-area: right;
+            /* at least 220px tall */
+            min-height: 220px;
+            /* prevents oversized image from spilling outside the box */
+            overflow: hidden;
+            background-color: #333;
+        }
+
+
+        /* Images */
+
+        .img {
+            /* makes image a block element helps avoid unwanted gaps that can 
+               occur with inline images */
+            display: block;
+            width: 100%;
+            height: 100%;
+            /* stops image being squashed, crops excess */
+            object-fit: cover;
+        }
+
+
+        /* Copyright */
+
+        .box6 {
+            /* places .box6 into area named copyright */
+            grid-area: copyright;
+            /* at least 60px tall */
+            min-height: 60px;
+            /* centers text horizontal and vertical */
+            display: grid;
+            place-items: center;
+            background-color: #222;
+            color: white;
+        }
+
+
+        /* Responsive Design Tablet 800px or smaller */
+
+        @media (max-width: 800px) {
+
+            .container {
+                /* on smaller screens sidebars shrink was 200px now 150px */
+                grid-template-columns: 150px 1fr 150px;
+            }
+
+            nav ul {
+                /* reduces gap from 30px to 15px */
+                gap: 15px;
+            }
+
+        }
+
+
+        /* Responsive Design Mobile 600px or less */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                /* Change to one column vertical */
+
+                grid-template-columns: 1fr;
+
+                /* Stack everything */
+
+                grid-template-areas:
+                    "logo"
+                    "nav"
+                    "left"
+                    "main"
+                    "right"
+                    "copyright";
+            }
+
+
+            .box1 {
+                /* logo slightly shorter on mobile desktop 100px now 80px */
+                height: 80px;
+            }
+
+
+            .box2 {
+                /* nav box slightly shorter */
+                min-height: 80px;
+            }
+
+
+            nav ul {
+                /* change to 1 column vertical */
+                grid-template-columns: 1fr;
+                /* center text */
+                text-align: center;
+                gap: 15px;
+            }
+
+
+            .box3 {
+                /* makes image 200px tall */
+                height: 200px;
+            }
+
+
+            .box4 {
+                /* main content minimum height 250px */
+                min-height: 250px;
+            }
+
+
+            .box5 {
+                /* makes second image 200px tall */
+                height: 200px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- Logo -->
+
+        <div class="box1"> LOGO </div>
+
+
+        <!-- Navigation -->
+
+        <div class="box2">
+
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+
+        <!-- Left Image -->
+
+        <div class="box3">
+            <img class="img" src="images/gallery4.jpg" alt="Left image">
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="box4">
+            <h1>Main Content</h1>
+            <p>  This is the main content of the website. </p>
+        </div>
+
+
+        <!-- Right Image -->
+
+        <div class="box5">
+            <img class="img" src="images/gallery5.jpg" alt="Right image">
+        </div>
+
+
+        <!-- Copyright -->
+
+        <div class="box6">
+            Copyright © 2026
+        </div>
+
+    </div>
+
+</body>
+</html>
